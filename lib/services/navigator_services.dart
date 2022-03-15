@@ -83,7 +83,7 @@ class Navigate {
 
   static navigate_to_admin(context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => AdminPanel()));
+        context, MaterialPageRoute(builder: (context) => AdminPanel(replace: '',)));
   }
   static navigate_to_type(context) {
     Navigator.push(

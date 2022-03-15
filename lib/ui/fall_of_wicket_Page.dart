@@ -1,3 +1,4 @@
+import 'package:cricketscore/ui/get_login.dart';
 import 'package:cricketscore/ui/retire_Page.dart';
 import 'package:flutter/material.dart';
 import 'package:cricketscore/widgets/text.dart';
@@ -77,7 +78,7 @@ class _FallofWicketState extends State<FallofWicket> {
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Retire()));
+                          MaterialPageRoute(builder: (context) =>GetLogin() ));  //Retire(t1: t1, t2: t2)
                     },
                     child: Text("Done"),
                     style: ElevatedButton.styleFrom(

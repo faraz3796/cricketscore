@@ -2,14 +2,16 @@ import 'package:cricketscore/ui/admin_panel.dart';
 import 'package:flutter/material.dart';
 
 class Retire extends StatefulWidget {
-  Retire({Key? key}) : super(key: key);
-
+  Retire({Key? key,required this.p1,required this.p2}) : super(key: key);
+String p1,p2;
   @override
-  State<Retire> createState() => _RetireState();
+  State<Retire> createState() => _RetireState(p1,p2);
 }
 
 class _RetireState extends State<Retire> {
   int _value = 1;
+  String p1,p2;
+  _RetireState(this.p1,this.p2);
   TextEditingController replacedBy = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,7 @@ class _RetireState extends State<Retire> {
                   height: height / 35,
                 ),
                 ListTile(
-                  title: Text("Player name",
+                  title: Text("$p1",
                       style: TextStyle(fontWeight: FontWeight.bold)),
                   leading: Radio(
                       activeColor: Colors.black,
@@ -56,7 +58,7 @@ class _RetireState extends State<Retire> {
                       }),
                 ),
                 ListTile(
-                  title: Text("Player name",
+                  title: Text("$p2",
                       style: TextStyle(fontWeight: FontWeight.bold)),
                   leading: Radio(
                       activeColor: Colors.black,
@@ -103,7 +105,7 @@ class _RetireState extends State<Retire> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => AdminPanel()));
+                                builder: (context) => AdminPanel(replace:replacedBy.text)));
                       },
                       child: Text("Done"),
                       style: ElevatedButton.styleFrom(

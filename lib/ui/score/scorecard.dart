@@ -3,14 +3,17 @@ import 'package:cricketscore/ui/score/scorecard_team.dart';
 import 'package:flutter/material.dart';
 
 class ScorecardMain extends StatefulWidget {
-  ScorecardMain({Key? key}) : super(key: key);
+  ScorecardMain({Key? key,}) : super(key: key);
 
+ 
   @override
   State<ScorecardMain> createState() => _ScorecardMainState();
 }
 
 class _ScorecardMainState extends State<ScorecardMain> {
+
   bool _team1 = true;
+ 
   @override
   Widget build(BuildContext context) {
     return Stack(

@@ -1,19 +1,21 @@
+import 'package:cricketscore/ui/ScoreCard_Page.dart';
 import 'package:cricketscore/ui/fall_of_wicket_Page.dart';
 import 'package:flutter/material.dart';
 import 'package:cricketscore/widgets/text.dart';
 
 class OpeningPlayers extends StatefulWidget {
-  OpeningPlayers({Key? key}) : super(key: key);
-
+  OpeningPlayers({Key? key,required this.t1,required this.t2,required this.ovrs,required this.replace}) : super(key: key);
+   String t1,t2,ovrs,replace;
   @override
-  State<OpeningPlayers> createState() => _OpeningPlayersState();
+  State<OpeningPlayers> createState() => _OpeningPlayersState(t1: t1, t2: t2, ovrs: ovrs,replace:replace );
 }
 
 class _OpeningPlayersState extends State<OpeningPlayers> {
   TextEditingController strikerController = TextEditingController();
   TextEditingController nonStrikerController = TextEditingController();
   TextEditingController openingBowlerController = TextEditingController();
-
+  _OpeningPlayersState({required this.t1,required this.t2,required this.ovrs,required this.replace});
+  String t1,t2,ovrs,replace;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -53,8 +55,8 @@ class _OpeningPlayersState extends State<OpeningPlayers> {
                   onPressed: () {
                     Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => FallofWicket()));
+                     MaterialPageRoute(
+                            builder: (context) => ScoreCard(t1: t1, t2: t2, ovrs: ovrs, striker:strikerController.text, nonstriker: nonStrikerController.text, opbowler: openingBowlerController.text,replace: replace)));
                   },
                   child: Text("Start match"),
                   style: ElevatedButton.styleFrom(
@@ -83,3 +85,4 @@ class _OpeningPlayersState extends State<OpeningPlayers> {
             hintStyle: TextStyle(color: Colors.black26)));
   }
 }
+ //FallofWicket()  

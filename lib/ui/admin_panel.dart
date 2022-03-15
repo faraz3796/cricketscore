@@ -1,20 +1,26 @@
 import 'package:cricketscore/ui/ScoreCard_Page.dart';
+import 'package:cricketscore/ui/opening_players_Page.dart';
 import 'package:flutter/material.dart';
 import 'package:cricketscore/widgets/text.dart';
 
 class AdminPanel extends StatefulWidget {
-  AdminPanel({Key? key}) : super(key: key);
-
+  AdminPanel({Key? key,required this.replace}) : super(key: key);
+ String replace;
   @override
-  State<AdminPanel> createState() => _AdminPanelState();
+  State<AdminPanel> createState() => _AdminPanelState(replace);
 }
 
 class _AdminPanelState extends State<AdminPanel> {
+  String replace;
+  _AdminPanelState(this.replace);
   TextEditingController teamOne = TextEditingController();
   TextEditingController teamTwo = TextEditingController();
   TextEditingController Overs = TextEditingController();
 
   int _value = 1;
+  int modeval = 1;
+  int tossval = 1;
+  int optval = 1;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -39,7 +45,7 @@ class _AdminPanelState extends State<AdminPanel> {
                 color: Colors.black,
               ),
               SizedBox(height: height / 100),
-              radiobutton(width, height, "Test Mode", "Live Mode"),
+              radiobutton(width, height, "Test Mode", "Live Mode", modeval),
 
 // Video Stream Link
 
@@ -58,6 +64,14 @@ class _AdminPanelState extends State<AdminPanel> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.white),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none
+                        ),
+                      ),
+                    ),
                 ),
               ),
 
@@ -98,7 +112,7 @@ class _AdminPanelState extends State<AdminPanel> {
               SizedBox(
                 height: height / 80,
               ),
-              radiobutton(width, height, "Team One", "Team Two"),
+              radiobutton(width, height, "Team One", "Team Two", tossval),
 
               //Opted To?
 
@@ -107,7 +121,7 @@ class _AdminPanelState extends State<AdminPanel> {
               ),
               TextAlign(text: "Opted To", fontsize: 15, color: Colors.black),
               SizedBox(height: height / 100),
-              radiobutton(width, height, "Bat", "Bowl"),
+              radiobutton(width, height, "Bat", "Bowl", optval),
 
               //Overs?
 
@@ -155,10 +169,12 @@ class _AdminPanelState extends State<AdminPanel> {
                       width: width / 2.8,
                       child: ElevatedButton(
                         onPressed: () {
+                          setState(() {
+                            
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ScoreCard()));
+                                  builder: (context) =>OpeningPlayers(t1:teamOne.text, t2:teamTwo.text, ovrs:Overs.text,replace:replace,)));  });
                         },
                         child: Text("Start Match"),
                         style: ElevatedButton.styleFrom(
@@ -191,7 +207,7 @@ class _AdminPanelState extends State<AdminPanel> {
   }
 
   Material radiobutton(
-      double width, double height, String text1, String text2) {
+      double width, double height, String text1, String text2, int val) {
     return Material(
       borderRadius: BorderRadius.circular(12),
       elevation: 5,
@@ -207,10 +223,12 @@ class _AdminPanelState extends State<AdminPanel> {
               Radio(
                   activeColor: Colors.black,
                   value: 1,
-                  groupValue: _value,
+                  groupValue: val,
                   onChanged: (value) {
                     setState(() {
-                      _value = value as int;
+                   
+                      val = value as int;
+                      print(val);
                     });
                   }),
               Text(
@@ -222,10 +240,11 @@ class _AdminPanelState extends State<AdminPanel> {
               Radio(
                   activeColor: Colors.black,
                   value: 2,
-                  groupValue: _value,
+                  groupValue: val,
                   onChanged: (value) {
                     setState(() {
-                      _value = value as int;
+                      val = value as int;
+                      print(val);
                     });
                   }),
               Text(text2, style: TextStyle(fontWeight: FontWeight.bold))
