@@ -13,7 +13,7 @@ class _YoutubeScreenState extends State<YoutubeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbar(context,"Live Match"),
+      appBar: appbar(context, "Live Match"),
       body: Container(
         alignment: Alignment.topCenter,
         width: MediaQuery.of(context).size.width,
@@ -54,7 +54,7 @@ class _YoutubeScreenState extends State<YoutubeScreen> {
               const SizedBox(
                 height: 20,
               ),
-              thisOver(context),
+              thisOver(context, [1, 2, 2, "w", 4, 6]),
               const SizedBox(height: 20),
               scoreHeader(context),
               const SizedBox(height: 10),
@@ -77,6 +77,4 @@ class _YoutubeScreenState extends State<YoutubeScreen> {
       ),
     );
   }
-
-
 }

@@ -4,18 +4,32 @@ import 'package:flutter/material.dart';
 import 'package:cricketscore/widgets/text.dart';
 
 class OpeningPlayers extends StatefulWidget {
-  OpeningPlayers({Key? key,required this.t1,required this.t2,required this.ovrs,required this.replace}) : super(key: key);
-   String t1,t2,ovrs,replace;
+  OpeningPlayers(
+      {Key? key,
+      required this.t1,
+      required this.t2,
+      required this.ovrs,
+      required this.replace})
+      : super(key: key);
+  String t1, t2, ovrs, replace;
   @override
-  State<OpeningPlayers> createState() => _OpeningPlayersState(t1: t1, t2: t2, ovrs: ovrs,replace:replace );
+  State<OpeningPlayers> createState() =>
+      _OpeningPlayersState(t1: t1, t2: t2, ovrs: ovrs, replace: replace);
 }
 
 class _OpeningPlayersState extends State<OpeningPlayers> {
-  TextEditingController strikerController = TextEditingController();
-  TextEditingController nonStrikerController = TextEditingController();
-  TextEditingController openingBowlerController = TextEditingController();
-  _OpeningPlayersState({required this.t1,required this.t2,required this.ovrs,required this.replace});
-  String t1,t2,ovrs,replace;
+  TextEditingController strikerController =
+      TextEditingController(text: "Player 1");
+  TextEditingController nonStrikerController =
+      TextEditingController(text: "Player 2");
+  TextEditingController openingBowlerController =
+      TextEditingController(text: "Bowler 1");
+  _OpeningPlayersState(
+      {required this.t1,
+      required this.t2,
+      required this.ovrs,
+      required this.replace});
+  String t1, t2, ovrs, replace;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -55,8 +69,15 @@ class _OpeningPlayersState extends State<OpeningPlayers> {
                   onPressed: () {
                     Navigator.push(
                         context,
-                     MaterialPageRoute(
-                            builder: (context) => ScoreCard(t1: t1, t2: t2, ovrs: ovrs, striker:strikerController.text, nonstriker: nonStrikerController.text, opbowler: openingBowlerController.text,replace: replace)));
+                        MaterialPageRoute(
+                            builder: (context) => ScoreCard(
+                                t1: t1,
+                                t2: t2,
+                                ovrs: ovrs,
+                                striker: strikerController.text,
+                                nonstriker: nonStrikerController.text,
+                                opbowler: openingBowlerController.text,
+                                replace: replace)));
                   },
                   child: Text("Start match"),
                   style: ElevatedButton.styleFrom(

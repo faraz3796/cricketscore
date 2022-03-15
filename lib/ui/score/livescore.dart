@@ -35,7 +35,7 @@ class _LiveScoreState extends State<LiveScore> {
           const SizedBox(
             height: 10,
           ),
-          thisOver(context),
+          thisOver(context, [1, 2, 2, "w", 4, 6]),
           const SizedBox(
             height: 10,
           ),

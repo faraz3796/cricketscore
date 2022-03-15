@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:cricketscore/widgets/text.dart';
 
 class AdminPanel extends StatefulWidget {
-  AdminPanel({Key? key,required this.replace}) : super(key: key);
- String replace;
+  AdminPanel({Key? key, required this.replace}) : super(key: key);
+  String replace;
   @override
   State<AdminPanel> createState() => _AdminPanelState(replace);
 }
@@ -13,8 +13,8 @@ class AdminPanel extends StatefulWidget {
 class _AdminPanelState extends State<AdminPanel> {
   String replace;
   _AdminPanelState(this.replace);
-  TextEditingController teamOne = TextEditingController();
-  TextEditingController teamTwo = TextEditingController();
+  TextEditingController teamOne = TextEditingController(text: "Team 1");
+  TextEditingController teamTwo = TextEditingController(text: "Team 2");
   TextEditingController Overs = TextEditingController();
 
   int _value = 1;
@@ -45,7 +45,51 @@ class _AdminPanelState extends State<AdminPanel> {
                 color: Colors.black,
               ),
               SizedBox(height: height / 100),
-              radiobutton(width, height, "Test Mode", "Live Mode", modeval),
+              Material(
+                  borderRadius: BorderRadius.circular(12),
+                  elevation: 5,
+                  child: Container(
+                    width: width / 1,
+                    height: height / 20,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.white),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Row(children: [
+                          Radio(
+                              activeColor: Colors.black,
+                              value: 1,
+                              groupValue: modeval,
+                              onChanged: (value) {
+                                setState(() {
+                                  modeval = value as int;
+                                  print(modeval);
+                                });
+                              }),
+                          Text(
+                            "Test Mode",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ]),
+                        Row(children: [
+                          Radio(
+                              activeColor: Colors.black,
+                              value: 2,
+                              groupValue: modeval,
+                              onChanged: (value) {
+                                setState(() {
+                                  modeval = value as int;
+                                  print(modeval);
+                                });
+                              }),
+                          Text("Live Mode",
+                              style: TextStyle(fontWeight: FontWeight.bold))
+                        ]),
+                      ],
+                    ),
+                  )),
 
 // Video Stream Link
 
@@ -64,14 +108,12 @@ class _AdminPanelState extends State<AdminPanel> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.white),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: InputBorder.none
-                        ),
-                      ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      decoration: InputDecoration(border: InputBorder.none),
                     ),
+                  ),
                 ),
               ),
 
@@ -112,7 +154,51 @@ class _AdminPanelState extends State<AdminPanel> {
               SizedBox(
                 height: height / 80,
               ),
-              radiobutton(width, height, "Team One", "Team Two", tossval),
+              Material(
+                  borderRadius: BorderRadius.circular(12),
+                  elevation: 5,
+                  child: Container(
+                    width: width / 1,
+                    height: height / 20,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.white),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Row(children: [
+                          Radio(
+                              activeColor: Colors.black,
+                              value: 1,
+                              groupValue: tossval,
+                              onChanged: (value) {
+                                setState(() {
+                                  tossval = value as int;
+                                  print(tossval);
+                                });
+                              }),
+                          Text(
+                            teamOne.text,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ]),
+                        Row(children: [
+                          Radio(
+                              activeColor: Colors.black,
+                              value: 2,
+                              groupValue: tossval,
+                              onChanged: (value) {
+                                setState(() {
+                                  tossval = value as int;
+                                  print(tossval);
+                                });
+                              }),
+                          Text(teamTwo.text,
+                              style: TextStyle(fontWeight: FontWeight.bold))
+                        ]),
+                      ],
+                    ),
+                  )),
 
               //Opted To?
 
@@ -121,7 +207,52 @@ class _AdminPanelState extends State<AdminPanel> {
               ),
               TextAlign(text: "Opted To", fontsize: 15, color: Colors.black),
               SizedBox(height: height / 100),
-              radiobutton(width, height, "Bat", "Bowl", optval),
+              //radiobutton(width, height, "Bat", "Bowl", optval),
+              Material(
+                  borderRadius: BorderRadius.circular(12),
+                  elevation: 5,
+                  child: Container(
+                    width: width / 1,
+                    height: height / 20,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.white),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Row(children: [
+                          Radio(
+                              activeColor: Colors.black,
+                              value: 1,
+                              groupValue: optval,
+                              onChanged: (value) {
+                                setState(() {
+                                  optval = value as int;
+                                  print(optval);
+                                });
+                              }),
+                          Text(
+                            "Bat",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ]),
+                        Row(children: [
+                          Radio(
+                              activeColor: Colors.black,
+                              value: 2,
+                              groupValue: optval,
+                              onChanged: (value) {
+                                setState(() {
+                                  optval = value as int;
+                                  print(optval);
+                                });
+                              }),
+                          Text("Bowl",
+                              style: TextStyle(fontWeight: FontWeight.bold))
+                        ]),
+                      ],
+                    ),
+                  )),
 
               //Overs?
 
@@ -170,11 +301,16 @@ class _AdminPanelState extends State<AdminPanel> {
                       child: ElevatedButton(
                         onPressed: () {
                           setState(() {
-                            
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>OpeningPlayers(t1:teamOne.text, t2:teamTwo.text, ovrs:Overs.text,replace:replace,)));  });
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => OpeningPlayers(
+                                          t1: teamOne.text,
+                                          t2: teamTwo.text,
+                                          ovrs: Overs.text,
+                                          replace: replace,
+                                        )));
+                          });
                         },
                         child: Text("Start Match"),
                         style: ElevatedButton.styleFrom(
@@ -204,54 +340,5 @@ class _AdminPanelState extends State<AdminPanel> {
             ),
             hintText: hintText,
             hintStyle: TextStyle(fontSize: 14, color: Colors.black26)));
-  }
-
-  Material radiobutton(
-      double width, double height, String text1, String text2, int val) {
-    return Material(
-      borderRadius: BorderRadius.circular(12),
-      elevation: 5,
-      child: Container(
-        width: width / 1,
-        height: height / 20,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12), color: Colors.white),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Row(children: [
-              Radio(
-                  activeColor: Colors.black,
-                  value: 1,
-                  groupValue: val,
-                  onChanged: (value) {
-                    setState(() {
-                   
-                      val = value as int;
-                      print(val);
-                    });
-                  }),
-              Text(
-                text1,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              )
-            ]),
-            Row(children: [
-              Radio(
-                  activeColor: Colors.black,
-                  value: 2,
-                  groupValue: val,
-                  onChanged: (value) {
-                    setState(() {
-                      val = value as int;
-                      print(val);
-                    });
-                  }),
-              Text(text2, style: TextStyle(fontWeight: FontWeight.bold))
-            ]),
-          ],
-        ),
-      ),
-    );
   }
 }

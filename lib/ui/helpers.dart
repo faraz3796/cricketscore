@@ -390,7 +390,7 @@ Padding newsFeed(
   );
 }
 
-AppBar appbar(context,String title ) {
+AppBar appbar(context, String title) {
   return AppBar(
     title: Text(title),
     backgroundColor: HexColor("#6685FF"),
@@ -755,7 +755,7 @@ Material blackScoreContainer(BuildContext context) {
   );
 }
 
-Stack thisOver(BuildContext context) {
+Stack thisOver(BuildContext context, List over) {
   return Stack(
     alignment: Alignment.topCenter,
     children: [
@@ -772,19 +772,32 @@ Stack thisOver(BuildContext context) {
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  run("1"),
-                  run("2"),
-                  run("2"),
-                  wicKet(),
-                  four(),
-                  Six(),
-                ],
-              ),
-            ),
+            // child: SingleChildScrollView(
+            //   scrollDirection: Axis.horizontal,
+            //   child: Row(
+            //     children: [
+            //       run("1"),
+            //       run("2"),
+            //       run("2"),
+            //       wicKet(),
+            //       four(),
+            //       Six(),
+            //     ],
+            //   ),
+            // ),
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: over.length,
+                itemBuilder: (BuildContext context, index) {
+                  if (over[index].toString() == "4") {
+                    return four();
+                  } else if (over[index].toString() == "w") {
+                    return wicKet();
+                  } else if (over[index].toString() == "6") {
+                    return Six();
+                  }
+                  return run(over[index].toString());
+                }),
           ),
         ),
       ),
