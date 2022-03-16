@@ -21,6 +21,8 @@ class _AdminPanelState extends State<AdminPanel> {
   int modeval = 1;
   int tossval = 1;
   int optval = 1;
+  int flag=0;
+  int opt=0;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -57,7 +59,7 @@ class _AdminPanelState extends State<AdminPanel> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Row(children: [
+                        Row(children: [  //MODE
                           Radio(
                               activeColor: Colors.black,
                               value: 1,
@@ -91,7 +93,7 @@ class _AdminPanelState extends State<AdminPanel> {
                     ),
                   )),
 
-// Video Stream Link
+                   // Video Stream Link
 
               SizedBox(
                 height: height / 50,
@@ -174,6 +176,7 @@ class _AdminPanelState extends State<AdminPanel> {
                               onChanged: (value) {
                                 setState(() {
                                   tossval = value as int;
+                                  flag=value as int;
                                   print(tossval);
                                 });
                               }),
@@ -190,7 +193,7 @@ class _AdminPanelState extends State<AdminPanel> {
                               onChanged: (value) {
                                 setState(() {
                                   tossval = value as int;
-                                  print(tossval);
+                                  flag=value as int;
                                 });
                               }),
                           Text(teamTwo.text,
@@ -228,6 +231,7 @@ class _AdminPanelState extends State<AdminPanel> {
                               onChanged: (value) {
                                 setState(() {
                                   optval = value as int;
+                                  opt=value as int;
                                   print(optval);
                                 });
                               }),
@@ -244,6 +248,7 @@ class _AdminPanelState extends State<AdminPanel> {
                               onChanged: (value) {
                                 setState(() {
                                   optval = value as int;
+                                  opt=value as int;
                                   print(optval);
                                 });
                               }),
@@ -309,6 +314,8 @@ class _AdminPanelState extends State<AdminPanel> {
                                           t2: teamTwo.text,
                                           ovrs: Overs.text,
                                           replace: replace,
+                                          flag:flag,
+                                          opt:opt
                                         )));
                           });
                         },
@@ -339,6 +346,11 @@ class _AdminPanelState extends State<AdminPanel> {
               borderSide: BorderSide(color: Colors.black),
             ),
             hintText: hintText,
-            hintStyle: TextStyle(fontSize: 14, color: Colors.black26)));
+           hintStyle: TextStyle(fontSize: 14, color: Colors.black26)));
+  
+
+  
   }
+ 
+  
 }

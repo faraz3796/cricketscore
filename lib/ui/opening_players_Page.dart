@@ -9,12 +9,16 @@ class OpeningPlayers extends StatefulWidget {
       required this.t1,
       required this.t2,
       required this.ovrs,
-      required this.replace})
+      required this.replace,
+      required this.opt,
+      required this.flag,
+      })
       : super(key: key);
   String t1, t2, ovrs, replace;
+  int flag,opt;
   @override
   State<OpeningPlayers> createState() =>
-      _OpeningPlayersState(t1: t1, t2: t2, ovrs: ovrs, replace: replace);
+      _OpeningPlayersState(t1: t1, t2: t2, ovrs: ovrs, replace: replace,opt:opt,flag:flag);
 }
 
 class _OpeningPlayersState extends State<OpeningPlayers> {
@@ -28,8 +32,12 @@ class _OpeningPlayersState extends State<OpeningPlayers> {
       {required this.t1,
       required this.t2,
       required this.ovrs,
-      required this.replace});
+      required this.replace,
+      required this.opt,
+      required this.flag,
+      });
   String t1, t2, ovrs, replace;
+  int flag,opt;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -77,7 +85,7 @@ class _OpeningPlayersState extends State<OpeningPlayers> {
                                 striker: strikerController.text,
                                 nonstriker: nonStrikerController.text,
                                 opbowler: openingBowlerController.text,
-                                replace: replace)));
+                                replace: replace,opt:opt,flag:flag,)));
                   },
                   child: Text("Start match"),
                   style: ElevatedButton.styleFrom(

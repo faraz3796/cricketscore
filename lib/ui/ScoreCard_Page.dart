@@ -14,9 +14,13 @@ class ScoreCard extends StatefulWidget {
       required this.striker,
       required this.nonstriker,
       required this.opbowler,
-      required this.replace})
+      required this.replace,
+      required this.flag,
+      required this.opt,
+      })
       : super(key: key);
   String t1, t2, ovrs, striker, nonstriker, opbowler, replace;
+  int flag,opt;
 
   @override
   State<ScoreCard> createState() => _ScoreCardState(
@@ -26,11 +30,16 @@ class ScoreCard extends StatefulWidget {
       striker: striker,
       nonstriker: nonstriker,
       opbowler: opbowler,
-      replace: replace);
+      replace: replace,
+      flag: flag,
+      opt: opt,
+      
+      );
 }
 
 class _ScoreCardState extends State<ScoreCard> {
   String t1, t2, ovrs, striker, nonstriker, opbowler, replace;
+  int flag,opt;
   int pruns = 0,
       pballs = 0,
       p4s = 0,
@@ -57,7 +66,27 @@ class _ScoreCardState extends State<ScoreCard> {
       required this.striker,
       required this.nonstriker,
       required this.opbowler,
-      required this.replace});
+      required this.replace,
+      required this.flag,
+      required this.opt,
+      
+      });
+       teamtoss(int flag,int opt){
+  
+     if(flag==1&&opt==1){
+     return t1; 
+     
+     }
+     if(flag==1&&opt==2){
+     return t2;    
+     }
+         if(flag==2&&opt==1){
+     return t2;    
+     }
+     if(flag==1&&opt==2){
+     return t1;   
+     }
+  }
   List over = [];
   String xxx = "";
   int x = 1;
@@ -103,7 +132,7 @@ class _ScoreCardState extends State<ScoreCard> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "$t1, 1st inning",
+                                "${teamtoss(flag,opt)}, 1st inning",
                                 style: TextStyle(fontSize: 12),
                               ),
                               Text("CRR", style: TextStyle(fontSize: 12))
@@ -371,6 +400,8 @@ class _ScoreCardState extends State<ScoreCard> {
               t2: t2,
               ovrs: ovrs,
               replace: replace,
+              flag:flag,
+              opt:opt,
             );
           }
         });
@@ -406,7 +437,11 @@ class _ScoreCardState extends State<ScoreCard> {
                         striker: striker,
                         nonstriker: nonstriker,
                         opbowler: opbowler,
-                        replace: replace)));
+                        replace: replace,
+                        flag:flag,
+                        opt:opt,
+                        
+                        )));
           },
           child: Text(text),
           style: ElevatedButton.styleFrom(
