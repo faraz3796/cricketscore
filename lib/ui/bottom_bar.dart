@@ -32,7 +32,6 @@ class _BottomBarState extends State<BottomBar> {
       ),
       home: Scaffold(
         body: screens[_currentIndex],
-        //appBar: appbar("Free Hit"),
         bottomNavigationBar: Container(
           color: Colors.black,
           child: SalomonBottomBar(

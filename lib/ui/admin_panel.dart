@@ -4,15 +4,112 @@ import 'package:flutter/material.dart';
 import 'package:cricketscore/widgets/text.dart';
 
 class AdminPanel extends StatefulWidget {
-  AdminPanel({Key? key, required this.replace}) : super(key: key);
+  AdminPanel({Key? key, 
+      required this.replace, 
+      // required this.t1,
+      // required this.t2,
+      // required this.ovrs,
+      // required this.striker,
+      // required this.nonstriker,
+      // required this.opbowler,
+      // required this.flag,
+      // required this.opt,
+      // required this.pruns,
+      // required this.pballs,
+      // required this.p4s,
+      // required this.p6s,
+      // required this.pt1,
+      // required this.pt2,
+      // required this.p2runs,
+      // required this.p2balls,
+      // required this.p24s,
+      // required this.p26s,
+      // required this.totalballs,
+      // required this.totalovers,
+      // required this.o,
+      // required this.extras,
+      // required this.extrap,
+      // required this.wickets,
+      // required this.bover,
+      // required this.bmaiden,
+      // required this.bruns,
+      // required this.bwickets,
+      // required this.bballs,
+      // required this.totalscore,
+      // required this.oneover,
+      // required this.batflag,
+      // required this.wide,
+      // required this.target,
+      // required this.byes,
+      // required this.legbyes,
+      // required this.noballs,
+      // required this.partner,
+      // required this.currval,
+      // required this.psr,
+      // required this.beconomy,
+      // required this.p2sr 
+      }) : super(key: key);
   String replace;
+  //  String t1, t2, ovrs, striker, nonstriker, opbowler;
+  //  int flag,opt;
+  //  int pruns,pballs,p4s,p6s,pt1,pt2,p2runs,p2balls,p24s,p26s,totalballs,totalovers,o,extras,extrap,wickets,bover,bmaiden,
+  // bruns,bwickets,bballs,totalscore,oneover,batflag,wide,target,byes,legbyes,noballs,partner,currval;
+  // double psr,beconomy,p2sr,totalstrike = 0;
   @override
-  State<AdminPanel> createState() => _AdminPanelState(replace);
+  State<AdminPanel> createState() =>_AdminPanelState(replace) ;
 }
 
 class _AdminPanelState extends State<AdminPanel> {
   String replace;
-  _AdminPanelState(this.replace);
+  // String t1, t2, ovrs, striker, nonstriker, opbowler;
+  //  int flag,opt;
+  //  int pruns,pballs,p4s,p6s,pt1,pt2,p2runs,p2balls,p24s,p26s,totalballs,totalovers,o,extras,extrap,wickets,bover,bmaiden,
+  // bruns,bwickets,bballs,totalscore,oneover,batflag,wide,target,byes,legbyes,noballs,partner,currval;
+  // double psr,beconomy,p2sr,totalstrike = 0;
+  _AdminPanelState(this.replace
+  // this.t1,
+  //      this.t2,
+  //     this.ovrs,
+  //     this.striker,
+  //      this.nonstriker,
+  //      this.opbowler,
+  //      this.flag,
+  //      this.opt,
+  //       this.pruns,
+  //       this.pballs,
+  //       this.p4s,
+  //       this.p6s,
+  //       this.pt1,
+  //       this.pt2,
+  //       this.p2runs,
+  //       this.p2balls,
+  //       this.p24s,
+  //       this.p26s,
+  //       this.totalballs,
+  //       this.totalovers,
+  //       this.o,
+  //       this.extras,
+  //       this.extrap,
+  //       this.wickets,
+  //       this.bover,
+  //       this.bmaiden,
+  //       this.bruns,
+  //       this.bwickets,
+  //       this.bballs,
+  //       this.totalscore,
+  //       this.oneover,
+  //       this.batflag,
+  //       this.wide,
+  //       this.target,
+  //       this.byes,
+  //       this.legbyes,
+  //       this.noballs,
+  //       this.partner,
+  //       this.currval,
+  //       this.psr,
+  //      this.beconomy,
+  //      this.p2sr
+  );
   TextEditingController teamOne = TextEditingController(text: "Team 1");
   TextEditingController teamTwo = TextEditingController(text: "Team 2");
   TextEditingController Overs = TextEditingController();
@@ -309,14 +406,7 @@ class _AdminPanelState extends State<AdminPanel> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => OpeningPlayers(
-                                          t1: teamOne.text,
-                                          t2: teamTwo.text,
-                                          ovrs: Overs.text,
-                                          replace: replace,
-                                          flag:flag,
-                                          opt:opt
-                                        )));
+                                    builder: (context) => OpeningPlayers(t1:teamOne.text, t2:teamTwo.text, ovrs:Overs.text,  opt:opt, flag:flag, )));
                           });
                         },
                         child: Text("Start Match"),

@@ -1,4 +1,5 @@
 import 'package:cricketscore/services/navigator_services.dart';
+import 'package:cricketscore/ui/admin_panel.dart';
 import 'package:cricketscore/ui/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
@@ -45,7 +46,10 @@ class _LoginScreenState extends State<LoginScreen> {
               textField("password", _password, true),
               verticalSpace(),
               logButton("Login", () {
-                Navigate.navigate_to_admin(context);
+                Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => AdminPanel(replace: "")),
+  );
               }),
               verticalSpace(),
               verticalSpace(),
